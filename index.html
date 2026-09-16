@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yusuf Maulana El Falah — Designer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #12151A;
+    --surface: #1B1F26;
+    --line: #2A2E36;
+    --ink: #EDEAE3;
+    --ink-dim: #8B8F98;
+    --brass: #C9A15D;
+    --brass-dim: rgba(201,161,93,0.35);
+  }
+
+  *{ margin:0; padding:0; box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Plus Jakarta Sans', sans-serif;
+    font-weight:400;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--brass-dim); color:var(--ink); }
+
+  a{ color:inherit; text-decoration:none; }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 48px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:50;
+    background:rgba(18,21,26,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s ease;
+  }
+  nav.scrolled{ border-bottom-color:var(--line); }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:22px 48px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .nav-mark{
+    font-family:'Fraunces', serif;
+    font-size:19px;
+    letter-spacing:-0.01em;
+  }
+  .nav-links{
+    display:flex;
+    gap:40px;
+    font-size:14px;
+    color:var(--ink-dim);
+  }
+  .nav-links a{ transition:color .25s ease; position:relative; }
+  .nav-links a:hover{ color:var(--ink); }
+  .nav-links a:focus-visible, a:focus-visible{
+    outline:1px solid var(--brass);
+    outline-offset:4px;
+    border-radius:2px;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:120px;
+    padding-bottom:80px;
+    position:relative;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    align-items:end;
+    gap:40px;
+  }
+  .eyebrow{
+    font-size:14px;
+    color:var(--brass);
+    margin-bottom:28px;
+    opacity:0;
+    animation:rise .8s .1s ease forwards;
+  }
+  h1.name{
+    font-family:'Fraunces', serif;
+    font-weight:400;
+    font-size:clamp(52px, 8vw, 108px);
+    line-height:0.98;
+    letter-spacing:-0.02em;
+    max-width:11ch;
+    opacity:0;
+    animation:rise .9s .25s ease forwards;
+  }
+  h1.name em{
+    font-style:italic;
+    font-weight:300;
+    color:var(--brass);
+  }
+  .hero-role{
+    font-size:15px;
+    color:var(--ink-dim);
+    text-align:right;
+    max-width:260px;
+    opacity:0;
+    animation:rise .9s .45s ease forwards;
+  }
+  .hero-role strong{
+    display:block;
+    color:var(--ink);
+    font-weight:500;
+    margin-bottom:6px;
+    font-size:16px;
+  }
+  .hero-desc{
+    margin-top:56px;
+    max-width:520px;
+    font-size:18px;
+    color:var(--ink-dim);
+    font-weight:300;
+    opacity:0;
+    animation:rise .9s .6s ease forwards;
+  }
+  .hero-desc strong{ color:var(--ink); font-weight:400; }
+
+  @keyframes rise{
+    from{ opacity:0; transform:translateY(18px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+
+  .scroll-hint{
+    position:absolute;
+    bottom:40px;
+    left:48px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:12px;
+    color:var(--ink-dim);
+    opacity:0;
+    animation:rise .9s .9s ease forwards;
+  }
+  .scroll-hint .line{
+    width:32px; height:1px;
+    background:var(--ink-dim);
+    position:relative;
+    overflow:hidden;
+  }
+  .scroll-hint .line::after{
+    content:'';
+    position:absolute; inset:0;
+    background:var(--brass);
+    animation:slide 2.2s ease-in-out infinite;
+  }
+  @keyframes slide{
+    0%{ transform:translateX(-100%); }
+    50%{ transform:translateX(0); }
+    100%{ transform:translateX(100%); }
+  }
+
+  /* ---------- SECTION SHARED ---------- */
+  section{ padding:120px 0; border-top:1px solid var(--line); }
+  .section-head{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    margin-bottom:64px;
+  }
+  .section-num{
+    font-family:'Fraunces', serif;
+    font-style:italic;
+    font-size:15px;
+    color:var(--brass);
+  }
+  .section-title{
+    font-family:'Fraunces', serif;
+    font-size:clamp(30px, 4vw, 42px);
+    font-weight:400;
+    letter-spacing:-0.01em;
+    max-width:10ch;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-body{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+  }
+  .about-text{
+    max-width:620px;
+    font-size:18px;
+    font-weight:300;
+    color:var(--ink-dim);
+  }
+  .about-text p{ margin-bottom:22px; }
+  .about-text strong{ color:var(--ink); font-weight:400; }
+
+  .stat-row{
+    display:flex;
+    gap:56px;
+    margin-top:48px;
+    flex-wrap:wrap;
+  }
+  .stat b{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:36px;
+    font-weight:400;
+    color:var(--ink);
+  }
+  .stat span{
+    font-size:13px;
+    color:var(--ink-dim);
+  }
+
+  /* ---------- EXPERTISE ---------- */
+  .skill-list{ display:flex; flex-direction:column; }
+  .skill-row{
+    display:grid;
+    grid-template-columns:200px 1fr auto;
+    align-items:baseline;
+    gap:40px;
+    padding:28px 0;
+    border-top:1px solid var(--line);
+    transition:padding-left .3s ease;
+    cursor:default;
+  }
+  .skill-row:last-child{ border-bottom:1px solid var(--line); }
+  .skill-row:hover{ padding-left:14px; }
+  .skill-row:hover .skill-name{ color:var(--brass); }
+  .skill-name{
+    font-family:'Fraunces', serif;
+    font-size:26px;
+    font-weight:400;
+    transition:color .3s ease;
+  }
+  .skill-desc{
+    font-size:15px;
+    color:var(--ink-dim);
+    max-width:52ch;
+    font-weight:300;
+  }
+  .skill-tag{
+    font-size:12px;
+    color:var(--ink-dim);
+    white-space:nowrap;
+  }
+
+  /* ---------- EXPERIENCE (timeline: legitimately sequential) ---------- */
+  .timeline{ display:flex; flex-direction:column; }
+  .tl-item{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    padding-bottom:44px;
+    position:relative;
+  }
+  .tl-year{
+    font-size:14px;
+    color:var(--ink-dim);
+    padding-top:4px;
+  }
+  .tl-content{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+    position:relative;
+  }
+  .tl-content::before{
+    content:'';
+    position:absolute;
+    left:-4.5px; top:6px;
+    width:8px; height:8px;
+    border-radius:50%;
+    background:var(--brass);
+  }
+  .tl-role{
+    font-family:'Fraunces', serif;
+    font-size:22px;
+    margin-bottom:6px;
+  }
+  .tl-org{ color:var(--brass); font-size:14px; margin-bottom:10px; }
+  .tl-desc{ color:var(--ink-dim); font-size:15px; font-weight:300; max-width:56ch; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-inner{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:40px;
+    align-items:start;
+  }
+  .contact-title{
+    font-family:'Fraunces', serif;
+    font-size:clamp(34px, 5vw, 56px);
+    font-weight:400;
+    line-height:1.15;
+    max-width:14ch;
+    margin-bottom:40px;
+  }
+  .contact-title em{ font-style:italic; color:var(--brass); }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+  }
+  .contact-links a{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px 0;
+    border-top:1px solid var(--line);
+    font-size:17px;
+    transition:color .25s ease, gap .25s ease;
+  }
+  .contact-links a:last-child{ border-bottom:1px solid var(--line); }
+  .contact-links a span:last-child{
+    color:var(--ink-dim);
+    font-size:14px;
+    transition:transform .25s ease, color .25s ease;
+  }
+  .contact-links a:hover{ color:var(--brass); }
+  .contact-links a:hover span:last-child{ transform:translateX(4px); color:var(--brass); }
+
+  footer{
+    padding:32px 48px;
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--ink-dim);
+    border-top:1px solid var(--line);
+    flex-wrap:wrap;
+    gap:12px;
+  }
+
+  /* ---------- REVEAL ON SCROLL ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(24px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; }
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .wrap, .nav-inner, footer{ padding-left:24px; padding-right:24px; }
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-role{ text-align:left; margin-top:24px; }
+    .section-head, .about-body, .skill-row, .tl-item, .contact-inner{
+      grid-template-columns:1fr;
+      gap:16px;
+    }
+    .skill-row{ grid-template-columns:1fr; }
+    .nav-links{ display:none; }
+    section{ padding:80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-mark">Yusuf Maulana El Manuk/a>
+    <div class="nav-links">
+      <a href="#about">Tentang</a>
+      <a href="#expertise">Keahlian</a>
+      <a href="#experience">Perjalanan</a>
+      <a href="#contact">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">Desainer Produk &amp; Identitas Visual</div>
+        <h1 class="name">Yusuf Maulana<br><em></em>Lana_elfal</em></h1>
+      </div>
+      <div class="hero-role">
+        <strong>Berbasis di Indonesia</strong>
+        Bekerja dengan brand dan tim produk yang menghargai kejelasan, bukan keramaian visual.
+      </div>
+    </div>
+    <p class="hero-desc">
+      Saya merancang sistem visual dan pengalaman digital dengan pendekatan <strong>minimalis yang berpikir</strong> — tiap elemen punya alasan untuk ada, tiap ruang kosong punya tujuan.
+    </p>
+  </div>
+  <div class="scroll-hint"><div class="line"></div>Gulir ke bawah</div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">01 — Profil</div>
+      <div class="section-title">Tentang saya</div>
+    </div>
+    <div class="about-body reveal">
+      <div></div>
+      <div class="about-text">
+        <p>Saya percaya desain yang baik tidak butuh penjelasan — ia bekerja secara diam, membuat sesuatu yang rumit terasa jernih. Selama bertahun-tahun, saya membantu brand dan tim produk menerjemahkan ide menjadi sistem visual yang <strong>konsisten, terukur, dan tahan lama</strong>.</p>
+        <p>Pendekatan saya bertumpu pada tiga hal: riset yang jujur, batasan yang jelas, dan eksekusi yang rapi hingga detail terkecil. Bukan tren yang dikejar, melainkan solusi yang tepat untuk masalah yang nyata.</p>
+        <div class="stat-row">
+          <div class="stat"><b>7+</b><span>Tahun pengalaman</span></div>
+          <div class="stat"><b>40+</b><span>Proyek diselesaikan</span></div>
+          <div class="stat"><b>12</b><span>Klien lintas industri</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">02 — Fokus</div>
+      <div class="section-title">Keahlian</div>
+    </div>
+    <div class="skill-list reveal">
+      <div class="skill-row">
+        <div class="skill-name">Identitas Visual</div>
+        <div class="skill-desc">Logo, sistem warna, tipografi, dan panduan brand yang konsisten di setiap titik sentuh.</div>
+        <div class="skill-tag">Branding</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Desain Produk</div>
+        <div class="skill-desc">Antarmuka digital yang fungsional — dari riset pengguna hingga sistem desain yang skalabel.</div>
+        <div class="skill-tag">UI / UX</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Desain Editorial</div>
+        <div class="skill-desc">Tata letak cetak dan digital yang mengutamakan keterbacaan dan hierarki informasi.</div>
+        <div class="skill-tag">Layout</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-name">Konsultasi Kreatif</div>
+        <div class="skill-desc">Mendampingi tim internal merumuskan arah visual yang jelas dan mudah dijalankan.</div>
+        <div class="skill-tag">Strategi</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="section-num">03 — Rekam Jejak</div>
+      <div class="section-title">Perjalanan</div>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl-item">
+        <div class="tl-year">2023 — Sekarang</div>
+        <div class="tl-content">
+          <div class="tl-role">Lead Designer</div>
+          <div class="tl-org">Studio Independen</div>
+          <div class="tl-desc">Memimpin arah visual untuk klien lintas industri, dari startup teknologi hingga brand gaya hidup.</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-year">2020 — 2023</div>
+        <div class="tl-content">
+          <div class="tl-role">Senior Product Designer</div>
+          <div class="tl-org">Perusahaan Teknologi</div>
+          <div class="tl-desc">Membangun sistem desain internal yang dipakai lebih dari sepuluh tim produk.</div>
+        </div>
+      </div>
+      <div class="tl-item" style="padding-bottom:0;">
+        <div class="tl-year">2018 — 2020</div>
+        <div class="tl-content">
+          <div class="tl-role">Graphic Designer</div>
+          <div class="tl-org">Agensi Kreatif</div>
+          <div class="tl-desc">Mengerjakan identitas visual dan materi kampanye untuk klien lokal dan regional.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-inner reveal">
+      <div></div>
+      <div>
+        <div class="contact-title">Punya proyek yang ingin <em>diwujudkan</em>?</div>
+        <div class="contact-links">
+          <a href="mailto:hello@yusufmaulana.id"><span>Email</span><span>hello@yusufmaulana.id →</span></a>
+          <a href="#"><span>LinkedIn</span><span>/in/yusufmaulanaelfalah →</span></a>
+          <a href="#"><span>Instagram</span><span>@yusufmaulana.design →</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Yusuf Maulana El Falah</span>
+  <span>Dirancang &amp; dikembangkan dengan perhatian pada detail</span>
+</footer>
+
+<script>
+  // Nav border on scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  });
+
+  // Reveal on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
